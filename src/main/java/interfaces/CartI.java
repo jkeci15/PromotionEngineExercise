@@ -11,5 +11,5 @@ public interface CartI {
     Double getProductAmount(Product product);
     boolean hasProduct(Product product);
     void updateProductAmount(Product product, double newAmount);
-//    CartI cloneCart();
+    CartI cloneCart();
 }
