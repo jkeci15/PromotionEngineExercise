@@ -1,11 +1,11 @@
 package PromotionTypes;
 
-import interfaces.CartI;
-import interfaces.PromotionI;
+import interfaces.ICart;
+import interfaces.IPromotion;
 import model.Product;
 
 
-public class nItemsPromotion implements PromotionI {
+public class nItemsPromotion implements IPromotion {
     protected Product product;
     protected double amount;
     protected double promotionPrice;
@@ -42,7 +42,7 @@ public class nItemsPromotion implements PromotionI {
     }
 
     @Override
-    public boolean isPromotionApplicable(CartI cartI) {
+    public boolean isPromotionApplicable(ICart cartI) {
         double cartAmount = 0;
         if (cartI.getCart().containsKey(this.product)){
             cartAmount = cartI.getCart().get(this.product);
@@ -52,7 +52,7 @@ public class nItemsPromotion implements PromotionI {
     }
 
     @Override
-    public double calculateDiscountedPrice(CartI cartI) {
+    public double calculateDiscountedPrice(ICart cartI) {
         double newPrice = 0;
         if (cartI.getCart().containsKey(this.product)){
             double cartAmount = cartI.getCart().get(this.product);

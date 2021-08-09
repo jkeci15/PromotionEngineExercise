@@ -1,6 +1,6 @@
 import PromotionTypes.nItemsPromotion;
 import PromotionTypes.togetherProductPromotion;
-import interfaces.PromotionI;
+import interfaces.IPromotion;
 import model.Cart;
 import model.Product;
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +27,7 @@ public class ScenarioCTest {
         HashMap<Product,Double> discountedItems = new HashMap<>();
         discountedItems.put(productC,(double)1);
         discountedItems.put(productD,(double)1);
-        List<PromotionI> promotions = new ArrayList<>();
+        List<IPromotion> promotions = new ArrayList<>();
         promotions.add(new nItemsPromotion(productA,3,130));
         promotions.add(new nItemsPromotion(productB,2,45));
         promotions.add(new togetherProductPromotion(discountedItems,30));

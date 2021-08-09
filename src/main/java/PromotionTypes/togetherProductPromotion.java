@@ -1,12 +1,12 @@
 package PromotionTypes;
 
-import interfaces.CartI;
-import interfaces.PromotionI;
+import interfaces.ICart;
+import interfaces.IPromotion;
 import model.Product;
 import java.util.HashMap;
 import java.util.Map;
 
-public class togetherProductPromotion implements PromotionI {
+public class togetherProductPromotion implements IPromotion {
     protected HashMap<Product, Double> promotionItems;
     protected double promotionPrice;
 
@@ -32,7 +32,7 @@ public class togetherProductPromotion implements PromotionI {
         }
     }
 
-    public boolean doesCartHaveAllProducts(CartI cartI){
+    public boolean doesCartHaveAllProducts(ICart cartI){
         for (Map.Entry<Product, Double> entry : this.promotionItems.entrySet()) {
             Product key = entry.getKey();
             double reqAmount = this.getPromotionProductAmount(key);
@@ -43,7 +43,7 @@ public class togetherProductPromotion implements PromotionI {
         return true;
     }
 //    To get the applicable number of promotions for the bundle promotion
-    public int nrOfPromotionsApplicable(CartI cartI){
+    public int nrOfPromotionsApplicable(ICart cartI){
         int minPromotions = Integer.MAX_VALUE;
         for (Map.Entry<Product, Double> entry : this.promotionItems.entrySet()) {
             Product key = entry.getKey();
@@ -58,12 +58,12 @@ public class togetherProductPromotion implements PromotionI {
     }
 
     @Override
-    public boolean isPromotionApplicable(CartI cartI) {
+    public boolean isPromotionApplicable(ICart cartI) {
         return this.doesCartHaveAllProducts(cartI);
     }
 
     @Override
-    public double calculateDiscountedPrice(CartI cart) {
+    public double calculateDiscountedPrice(ICart cart) {
         double totalPrice = 0;
 
         int minPromotionsApplicable = nrOfPromotionsApplicable(cart);

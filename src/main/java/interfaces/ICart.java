@@ -2,7 +2,7 @@ package interfaces;
 import model.Product;
 import java.util.HashMap;
 
-public interface CartI {
+public interface ICart {
     void addProduct(Product product, double amount);
     void removeProduct(Product product, double amount);
     int getUniqueCount();
@@ -11,5 +11,4 @@ public interface CartI {
     Double getProductAmount(Product product);
     boolean hasProduct(Product product);
     void updateProductAmount(Product product, double newAmount);
-    CartI cloneCart();
 }

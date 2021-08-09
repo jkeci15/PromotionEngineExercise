@@ -1,16 +1,16 @@
 import PromotionTypes.nItemsPromotion;
 import PromotionTypes.togetherProductPromotion;
-import interfaces.CartI;
-import interfaces.PromotionEngineCalculatorI;
-import interfaces.PromotionI;
+import interfaces.ICart;
+import interfaces.IPromotionEngineCalculator;
+import interfaces.IPromotion;
 import model.Product;
 import java.util.List;
 
-public class PromotionCalculator implements PromotionEngineCalculatorI {
+public class PromotionCalculator implements IPromotionEngineCalculator {
     @Override
-    public double getDiscountedPrice(CartI cart, List<PromotionI> promotions) {
+    public double getDiscountedPrice(ICart cart, List<IPromotion> promotions) {
         double discountedPrice = 0;
-        for (PromotionI promotion : promotions) {
+        for (IPromotion promotion : promotions) {
             if (promotion.isPromotionApplicable(cart)) {
                 // Apply promotion
                 discountedPrice += promotion.calculateDiscountedPrice(cart);

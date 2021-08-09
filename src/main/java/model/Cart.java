@@ -1,10 +1,10 @@
 package model;
 
-import interfaces.CartI;
+import interfaces.ICart;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cart implements CartI {
+public class Cart implements ICart {
     protected HashMap<Product, Double> cart;
 
     public Cart() {
@@ -71,16 +71,5 @@ public class Cart implements CartI {
         else {
             this.cart.remove(product);
         }
-    }
-
-    @Override
-    public CartI cloneCart() {
-        Cart newCart = new Cart();
-        for (Map.Entry<Product, Double> entry : this.cart.entrySet()) {
-            Product key = entry.getKey();
-            Double value = entry.getValue();
-            newCart.addProduct(key, value);
-        }
-        return newCart;
     }
 }
