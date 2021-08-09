@@ -4,11 +4,13 @@ import org.junit.jupiter.api.*;
 
 public class CartTest {
 
-    Cart testCart;
+    private Cart testCart;
+    private Product productA;
 
     @BeforeEach
     void CreateCart() {
         testCart = new Cart();
+        productA = new Product('A', 50);
     }
 
     @Test
@@ -18,7 +20,6 @@ public class CartTest {
     }
     @Test
     void testAddItemToCart(){
-        Product productA = new Product('A', 50);
         testCart.addProduct(productA,1);
         Assertions.assertEquals(1, testCart.getTotalCount());
         Assertions.assertEquals(1, testCart.getUniqueCount());
@@ -26,7 +27,6 @@ public class CartTest {
 
     @Test
     void testAddAndRemoveFromCart(){
-        Product productA = new Product('A', 50);
         testCart.addProduct(productA,1);
         testCart.addProduct(productA,7);
         Assertions.assertEquals(testCart.getTotalCount(),8);
