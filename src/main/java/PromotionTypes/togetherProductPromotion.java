@@ -76,7 +76,7 @@ public class togetherProductPromotion implements PromotionI {
             double amountForPromotion = this.promotionItems.get(product);
 
             //Add remaining products at full price
-            totalPrice += product.getPrice() * (amount - amountForPromotion * minPromotionsApplicable);
+            totalPrice += product.getPrice() * (amount - (amountForPromotion * minPromotionsApplicable));
         }
 
         return totalPrice;
